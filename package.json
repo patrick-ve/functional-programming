@@ -1,0 +1,27 @@
+{
+  "name": "functional-programming",
+  "version": "1.0.0",
+  "description": "NPM project for CMD functional programming",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrick-ve/functional-programming.git"
+  },
+  "author": "Patrick van Everdingen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/patrick-ve/functional-programming/issues"
+  },
+  "homepage": "https://github.com/patrick-ve/functional-programming#readme",
+  "dependencies": {
+    "d3": "^5.12.0",
+    "d3-fetch": "^1.1.2",
+    "lodash": "^4.17.15",
+    "node-fetch-polyfill": "^2.0.6",
+    "parcel-bundler": "^1.12.4",
+    "year-range-regex": "^0.1.0"
+  }
+}
