@@ -1,0 +1,71 @@
+!
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SVG + D3</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        html {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #222222;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-self: center;
+        }
+    </style>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <main>
+        <svg width="280px" height="640px" viewBox="20 20 280 640">
+            <rect x="20" y="40" width="200" height="560" fill="black" stroke="grey" stroke-width="6" />
+            <circle cx="120" cy="160" r="60" fill="red" stroke="black" stroke-width="4" />
+            <circle cx="120" cy="320" r="60" fill="gold" stroke="black" stroke-width="4" />
+            <circle cx="120" cy="480" r="60" fill="green" stroke="black" stroke-width="4" />
+        </svg>
+    </main>
+
+    <script>
+        const redLight = document.querySelector('circle:nth-of-type(1)')
+        const yellowLight = document.querySelector('circle:nth-of-type(2)')
+        const greenLight = document.querySelector('circle:nth-of-type(3)')
+        const allLights = Array.from(document.querySelectorAll('circle'))
+
+        function randomColor() {
+            return (Math.floor(Math.random() * 256))
+        }
+
+        redLight.addEventListener('click', () => {
+            allLights.forEach((element) => {
+                element.style.fill = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+            })
+        })
+    </script>
+</body>
+
+</html>
