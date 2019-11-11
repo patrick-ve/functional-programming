@@ -61,9 +61,12 @@
         }
 
         redLight.addEventListener('click', () => {
-            allLights.forEach((element) => {
-                element.style.fill = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
-            })
+            setInterval(() => {
+                allLights.forEach((element) => {
+                    element.style.fill =
+                        `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+                })
+            }, 1000)
         })
     </script>
 </body>
