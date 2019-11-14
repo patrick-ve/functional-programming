@@ -2,14 +2,19 @@
 let surveyData = d3.csv('./data/enquete.csv').then((data) => {
     const beautifulPlaceKey = 'Wat is de mooiste plek waar je ooit bent geweest? (GPS coördinaten)'
     const uglyPlaceKey = 'Wat is de lelijkste plek waar je ooit bent geweest? (GPS coördinaten)'
-    console.log(data[0][beautifulPlaceKey]);
-    console.log(data);
+    console.log(data.length);
 
-    var res = Object.keys(data[0]).reduce((acc, elem) => {
-        if (elem === beautifulPlaceKey || elem === uglyPlaceKey) acc[elem] = data[0][elem]
-        return acc
-    }, {})
-    console.log(res)
+    let transformedData = [];
+    for (let i = 0; i < data.length; i++) {
+        var res = Object.keys(data[i]).reduce((acc, elem) => {
+            if (elem === beautifulPlaceKey || elem === uglyPlaceKey) acc[elem] = data[i][elem]
+            return acc
+        }, {})
+        console.log(res)
+        transformedData.push(res)
+    }
+    console.log(transformedData)
+
 
     // for (let i = 0; i < data.length; i++) {
     //     data[i].beautiful = data[i].beautifulPlaceKey;
@@ -17,6 +22,10 @@ let surveyData = d3.csv('./data/enquete.csv').then((data) => {
     // }
     // console.log(data)
 });
+
+function getBeautifulPlace(data) {
+    data.forEach(getGeographicData)
+}
 
 
 // let geographicData = d3.csv('./data/enquete.csv').then((data) => {
