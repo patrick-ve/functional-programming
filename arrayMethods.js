@@ -48,8 +48,8 @@ const foundItem = items.find((item) => {
 
 // Applies operations on each item in an array. In this case we console.log
 // the name and price of each item. Shortens the long syntax of for loops
+console.log('Result of .forEach method')
 items.forEach((item) => {
-    console.log('Result of .forEach method')
     console.log(item.name)
     console.log(item.price)
 })
