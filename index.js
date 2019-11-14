@@ -1,45 +1,43 @@
 // Load .csv file in with d3.csv
-let surveyData = d3.csv('./data/enquete.csv').then((data) => {
-    const beautifulPlaceKey = 'Wat is de mooiste plek waar je ooit bent geweest? (GPS coördinaten)'
-    const uglyPlaceKey = 'Wat is de lelijkste plek waar je ooit bent geweest? (GPS coördinaten)'
-    console.log(data.length);
+function getKeys() {
+    d3.csv('./data/enquete.csv').then((data) => {
 
-    let transformedData = [];
-    for (let i = 0; i < data.length; i++) {
-        var res = Object.keys(data[i]).reduce((acc, elem) => {
-            if (elem === beautifulPlaceKey || elem === uglyPlaceKey) acc[elem] = data[i][elem]
-            return acc
-        }, {})
-        console.log(res)
-        transformedData.push(res)
-    }
-    console.log(transformedData)
+        // Define keys that should be looked out for
+        const beautifulPlaceKey = 'Wat is de mooiste plek waar je ooit bent geweest? (GPS coördinaten)'
+        const uglyPlaceKey = 'Wat is de lelijkste plek waar je ooit bent geweest? (GPS coördinaten)'
 
+        let transformedData = [];
+        for (let i = 0; i < data.length; i++) {
+            var res = Object.keys(data[i]).reduce((acc, elem) => {
+                if (elem === beautifulPlaceKey || elem === uglyPlaceKey) acc[elem] = data[i][elem]
+                return acc
+            }, {})
+            transformedData.push(res)
+        }
+        console.log('Transformed data is: ', transformedData)
 
-    // for (let i = 0; i < data.length; i++) {
-    //     data[i].beautiful = data[i].beautifulPlaceKey;
-    //     delete data[i].beautifulPlaceKey;
-    // }
-    // console.log(data)
-});
+        renameKeys(transformedData)
+        console.log('Renamed object is: ', renamedData)
 
-function getBeautifulPlace(data) {
-    data.forEach(getGeographicData)
+        createJSON(renamedData);
+        console.log('JSON data is: ', JSONdata)
+    });
 }
 
+function renameKeys(data) {
+    // Remap keys in JavaScript objects
+    return renamedData = data.map(({
+        'Wat is de mooiste plek waar je ooit bent geweest? (GPS coördinaten)': beautiful,
+        'Wat is de lelijkste plek waar je ooit bent geweest? (GPS coördinaten)': ugly
+    }) => ({
+        beautiful,
+        ugly
+    }));
+}
 
-// let geographicData = d3.csv('./data/enquete.csv').then((data) => {
-//     data.filter((item) => {
-//         const keys = ['Wat is de mooiste plek waar je ooit bent geweest? (GPS coördinaten)', 'Wat is de lelijkste plek waar je ooit bent geweest? (GPS coördinaten)'];
-//         item => keys.includes(item)
-//         console.log(item)
-//         return geographicData
-//     })
-// })
+function createJSON(renamedData) {
+    // Returns JSON
+    return JSONdata = JSON.stringify(renamedData);
+}
 
-// data.filter((item) => {
-//     const keys = ['Wat is de mooiste plek waar je ooit bent geweest? (GPS coördinaten)', 'Wat is de lelijkste plek waar je ooit bent geweest? (GPS coördinaten)'];
-//     item => keys.includes(item)
-//     console.log(item)
-// })
-// Index[50] and [51]
+getKeys();
